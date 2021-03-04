@@ -2,7 +2,6 @@ package ch.hslu.mobpro.firstappfinal
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.View
 import android.widget.EditText
 import android.widget.TextView
@@ -15,7 +14,7 @@ class QuestionActivity : AppCompatActivity(R.layout.activity_questions) {
 		super.onCreate(savedInstanceState)
 
 		// Read parameter and show on view.
-		val question = intent.getStringExtra("question")
+		val question = intent.getStringExtra(MainActivity.QUESTION)
 		question?.let { setQuestionText(it) }
 		findViewById<View>(R.id.question_button_done).setOnClickListener { buttonClicked() }
 	}
@@ -27,7 +26,7 @@ class QuestionActivity : AppCompatActivity(R.layout.activity_questions) {
 
 	private fun buttonClicked() {
 		val answerData = Intent()
-		answerData.putExtra("answer", answerText)
+		answerData.putExtra(MainActivity.ANSWER, answerText)
 		setResult(RESULT_OK, answerData)
 		finish()
 	}

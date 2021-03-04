@@ -18,7 +18,6 @@
 		</activity>
 		<activity android:name=".QuestionActivity"/>
 		<activity android:name=".lifecyclelog.LifecycleLogActivity"/>
-		<!-- TODO: hier acivity registieren-->
 	</application>
 
 </manifest>
