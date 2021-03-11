@@ -1,3 +1,4 @@
 rootProject.name= 'MOBPRO'
 
 include ':uebung1'
+include ':uebung2'
