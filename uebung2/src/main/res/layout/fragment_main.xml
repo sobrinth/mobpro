@@ -1,14 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView
-  xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  tools:context=".MainFragment">
 
-  <TextView
-    android:layout_width="wrap_content"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+
+  <LinearLayout
+    android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/text_margin"
-    android:text="@string/large_text"/>
-</androidx.core.widget.NestedScrollView>
+    android:orientation="vertical"
+    android:padding="@dimen/padding_textView">
+
+    <TextView
+      android:id="@+id/textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:padding="5dp"
+      android:text="@string/textView_text"
+      android:textSize="@dimen/font_titleSize"/>
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:background="@color/colorPrimary"
+      android:padding="@dimen/padding_textView"
+      android:text="@string/sectionOne_text"
+      android:textColor="@color/sectionText"
+      android:textSize="@dimen/font_titleSize"/>
+
+    <RadioGroup
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:orientation="horizontal">
+
+      <RadioButton
+        android:id="@+id/layoutLinearSelector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/rbutton_linear_text"
+        android:textSize="@dimen/font_titleSize"
+        android:padding="@dimen/padding_textView"
+        android:onClick="layoutLinearSelected"/>
+
+
+      <RadioButton
+        android:id="@+id/layoutContraintSelector"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/padding_textView"
+        android:text="@string/rbutton_constraint_text"
+        android:textSize="@dimen/font_titleSize"
+        android:onClick="layoutConstraintSelected"/>
+
+    </RadioGroup>
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:background="@color/colorPrimary"
+      android:padding="@dimen/padding_textView"
+      android:text="@string/sectionTwo_text"
+      android:textColor="@color/sectionText"
+      android:textSize="@dimen/font_titleSize"/>
+
+    <RatingBar
+      android:id="@+id/ratingBar"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:numStars="5"
+      android:padding="@dimen/padding_textView"/>
+
+    <TextView
+      android:id="@+id/ratingBar_textView"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:padding="5dp"
+      android:text="@string/ratingBar_textView_text"
+      android:textSize="@dimen/font_textSize"/>
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:background="@color/colorPrimary"
+      android:padding="@dimen/padding_textView"
+      android:text="@string/sectionThree_text"
+      android:textColor="@color/sectionText"
+      android:textSize="@dimen/font_titleSize"/>
+
+    <Spinner
+      android:id="@+id/spinner"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:entries="@array/itCourses"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:prompt="@string/spinnerPrompt"/>
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:background="@color/colorPrimary"
+      android:padding="@dimen/padding_textView"
+      android:text="@string/sectionFour_text"
+      android:textColor="@color/sectionText"
+      android:textSize="@dimen/font_titleSize"/>
+
+    <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:padding="5dp"
+      android:text="@string/lorem_ipsum"
+      android:textSize="@dimen/font_textSize"/>
+  </LinearLayout>
+</ScrollView>
