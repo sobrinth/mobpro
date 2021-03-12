@@ -21,4 +21,10 @@ Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lo
 Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo</string>
   <string name="linearlayout_vertical_text">Ich bin ein vertikales LinearLayout</string>
   <string name="linearlayout_horizontal_text">Ich bin ein horizontales LinearLayout</string>
+  <string name="cl_title_text">Beispiel Constraint-Layout</string>
+  <string name="cl_productID">Produkt ID</string>
+  <string name="cl_amount_text">Menge</string>
+  <string name="cb_special_text">Sondertarif</string>
+  <string name="cl_button_vm_text">VIEWMODEL: 0++</string>
+  <string name="cl_button_frag_text">FRAGMENT: 0++</string>
 </resources>

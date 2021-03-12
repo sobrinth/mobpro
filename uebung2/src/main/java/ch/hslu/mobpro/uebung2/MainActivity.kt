@@ -24,6 +24,10 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     fun layoutConstraintSelected(view: View) {
-
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.mainActivityView, ConstraintLayoutFragment())
+            .addToBackStack("fragmentConstraintLayout")
+            .commit()
     }
 }
