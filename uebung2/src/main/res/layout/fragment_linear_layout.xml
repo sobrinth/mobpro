@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  android:orientation="vertical">
+
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/linearlayout_vertical_text"/>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/llayout_size"
+      android:background="@color/yellow"/>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/llayout_size"
+      android:background="@color/red"/>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/llayout_size"
+      android:background="@color/green"/>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="@dimen/llayout_size"
+      android:background="@color/blue"/>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/linearlayout_horizontal_text"/>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:orientation="horizontal">
+
+      <TextView
+        android:layout_width="@dimen/llayout_size"
+        android:layout_height="match_parent"
+        android:background="@color/yellow"/>
+
+      <TextView
+        android:layout_width="@dimen/llayout_size"
+        android:layout_height="match_parent"
+        android:background="@color/red"/>
+
+      <TextView
+        android:layout_width="@dimen/llayout_size"
+        android:layout_height="match_parent"
+        android:background="@color/green"/>
+
+      <TextView
+        android:layout_width="@dimen/llayout_size"
+        android:layout_height="match_parent"
+        android:background="@color/blue"/>
+
+    </LinearLayout>
+  </LinearLayout>
+</LinearLayout>

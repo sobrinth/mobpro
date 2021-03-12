@@ -3,6 +3,7 @@ package ch.hslu.mobpro.uebung2
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
@@ -15,7 +16,11 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     fun layoutLinearSelected(view: View) {
-
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.mainActivityView, Fragment(R.layout.fragment_linear_layout))
+            .addToBackStack("fragmentLinearLayout")
+            .commit()
     }
 
     fun layoutConstraintSelected(view: View) {
