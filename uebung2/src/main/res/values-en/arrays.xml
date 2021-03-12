@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string-array name="itCourses">
+    <item>Android for Experts</item>
+    <item>TypeScript for Dummies</item>
+    <item>Security in the Web: Introduction</item>
+    <item>Java: Introduction</item>
+    <item>TCP/IP in a day</item>
+    <item>SQL Server: Administration</item>
+  </string-array>
+</resources>

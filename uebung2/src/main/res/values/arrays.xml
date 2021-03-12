@@ -2,6 +2,10 @@
 <resources>
   <string-array name="itCourses">
     <item>Android für Profis</item>
-    <item>TypeScript for Dummies</item>
+    <item>TypeScript für Dummies</item>
+    <item>Sicherheit im Web: Einstieg</item>
+    <item>Java: Einführung</item>
+    <item>TCP/IP in einem Tag</item>
+    <item>SQL Server: Administration</item>
   </string-array>
 </resources>

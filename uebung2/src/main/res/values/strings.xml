@@ -27,4 +27,5 @@ Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming 
   <string name="cb_special_text">Sondertarif</string>
   <string name="cl_button_vm_text">VIEWMODEL: 0++</string>
   <string name="cl_button_frag_text">FRAGMENT: 0++</string>
+  <string name="dialogSelection_text">ZEIG MIR DIE AUSWAHL</string>
 </resources>

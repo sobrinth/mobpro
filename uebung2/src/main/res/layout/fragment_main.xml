@@ -110,6 +110,12 @@
       android:textColor="@color/sectionText"
       android:textSize="@dimen/font_titleSize"/>
 
+    <Button
+      android:id="@+id/dialogSelection"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="@string/dialogSelection_text"/>
+
     <TextView
       android:layout_width="wrap_content"
       android:layout_height="wrap_content"
