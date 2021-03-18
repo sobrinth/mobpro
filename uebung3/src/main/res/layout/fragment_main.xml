@@ -4,5 +4,57 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
 
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:padding="5dp"
+      android:text="HSLU Mobile Programming"
+      android:textSize="@dimen/font_titleSize"/>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:background="@color/green"
+      android:padding="@dimen/padding_textView"
+      android:text="Application Preferences"
+      android:textSize="@dimen/font_textSize"/>
+
+    <TextView
+      android:id="@+id/tw_resume_count"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"/>
+
+    <TextView
+      android:id="@+id/tw_preferred_tea"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"/>
+
+    <Button
+      android:id="@+id/buttonEditPrefs"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="TEE PREFERENZEN EDITIEREN"
+      android:onClick="editTeaPreferenceClick"/>
+
+    <Button
+      android:id="@+id/buttonResetPrefs"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="TEE DEFAULT-PREFS SETZEN"
+      android:onClick="resetTeaPreferencesClick"/>
+
+  </LinearLayout>
+
 
 </ScrollView>

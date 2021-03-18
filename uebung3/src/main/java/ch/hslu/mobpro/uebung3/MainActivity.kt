@@ -1,9 +1,7 @@
 package ch.hslu.mobpro.uebung3
 
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
