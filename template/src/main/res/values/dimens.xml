@@ -1,0 +1,8 @@
+<resources>
+  <dimen name="text_margin">16dp</dimen>
+  <dimen name="padding_textView">5dp</dimen>
+  <dimen name="font_titleSize">18sp</dimen>
+  <dimen name="margin_bottom">15dp</dimen>
+  <dimen name="font_textSize">12sp</dimen>
+  <dimen name="llayout_size">80dp</dimen>
+</resources>
