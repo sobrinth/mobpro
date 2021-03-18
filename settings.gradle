@@ -1,4 +1,5 @@
 rootProject.name= 'MOBPRO'
 
-include ':uebung1'
-include ':uebung2'
+include ':uebung1' // FirstSkeletonApp
+include ':uebung2' // UIDemo
+include ':uebung3'
