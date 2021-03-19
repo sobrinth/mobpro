@@ -9,11 +9,13 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import ch.hslu.mobpro.uebung3.databinding.FragmentMainBinding
 
 class MainFragment : Fragment(R.layout.fragment_main) {
 
     private val sharedPreferencesViewModel: SharedPreferencesViewModel by activityViewModels()
+    private val fileReaderViewModel: FileReaderViewModel by activityViewModels()
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -36,6 +38,20 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         super.onViewCreated(view, savedInstanceState)
         binding.buttonEditPrefs.setOnClickListener { editTeaPreferencesOnClick() }
         binding.buttonResetPrefs.setOnClickListener { resetTeaPreferencesOnClick() }
+        binding.buttonSaveText.setOnClickListener { onClickSaveFile() }
+        binding.buttonLoadText.setOnClickListener { onClickLoadFile() }
+
+        fileReaderViewModel.getStoredText().observe(viewLifecycleOwner, Observer { text ->
+            binding.textFile.setText(text)
+        })
+
+        sharedPreferencesViewModel.getPreferenceSummary().observe(viewLifecycleOwner, Observer { text ->
+            binding.twPreferredTea.text = text
+        })
+
+        fileReaderViewModel.isExternalStorageEnabled().observe(viewLifecycleOwner, Observer { isExternalStorageEnabled ->
+            binding.cbUseExternalStorage.isEnabled = isExternalStorageEnabled
+        })
     }
 
     override fun onResume() {
@@ -43,7 +59,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         saveResumeCountToPrivatePreferences()
         updateResumeCounterView()
         sharedPreferencesViewModel.buildPreferenceSummaryString()
-        updateTeaPreferenceView()
     }
 
     private fun saveResumeCountToPrivatePreferences() {
@@ -62,10 +77,6 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         tvCounter.text = text;
     }
 
-    private fun updateTeaPreferenceView() {
-        binding.twPreferredTea.text = sharedPreferencesViewModel.getPreferenceSummary().value
-    }
-
 
     private fun editTeaPreferencesOnClick() {
         parentFragmentManager
@@ -77,9 +88,23 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private fun resetTeaPreferencesOnClick() {
         sharedPreferencesViewModel.setDefaultPreferences()
-        updateTeaPreferenceView()
     }
 
+    private fun onClickSaveFile() {
+        writeFile()
+    }
+
+    private fun writeFile() {
+        fileReaderViewModel.writeTextToFile(binding.textFile.text.toString(), binding.cbUseExternalStorage.isChecked)
+    }
+
+    private fun onClickLoadFile() {
+        readFile()
+    }
+
+    private fun readFile() {
+        fileReaderViewModel.loadTextFromFile(binding.cbUseExternalStorage.isChecked)
+    }
 
 
 

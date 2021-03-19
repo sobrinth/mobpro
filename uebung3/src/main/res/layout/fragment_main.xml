@@ -23,6 +23,7 @@
       android:layout_marginBottom="@dimen/margin_bottom"
       android:background="@color/green"
       android:padding="@dimen/padding_textView"
+      android:layout_margin="5dp"
       android:text="Application Preferences"
       android:textSize="@dimen/font_textSize"/>
 
@@ -43,16 +44,72 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_margin="5dp"
-      android:text="TEE PREFERENZEN EDITIEREN"
-      android:onClick="editTeaPreferenceClick"/>
+      android:text="TEE PREFERENZEN EDITIEREN"/>
 
     <Button
       android:id="@+id/buttonResetPrefs"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_margin="5dp"
-      android:text="TEE DEFAULT-PREFS SETZEN"
-      android:onClick="resetTeaPreferencesClick"/>
+      android:text="TEE DEFAULT-PREFS SETZEN"/>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:background="@color/green"
+      android:padding="@dimen/padding_textView"
+      android:layout_margin="5dp"
+      android:text="Dateisystem"
+      android:textSize="@dimen/font_textSize"/>
+
+    <CheckBox
+      android:id="@+id/cb_useExternalStorage"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:text="Externen Speicher benutzen"/>
+
+    <EditText
+      android:id="@+id/text_file"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:inputType="text"
+      android:hint="Irgendein Text"/>
+
+    <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:gravity="center_horizontal"
+      android:padding="6dp"
+      android:weightSum="2">
+
+      <Button
+        android:id="@+id/buttonSaveText"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_margin="1dp"
+        android:text="Speichern"
+        android:layout_weight="1"/>
+
+      <Button
+        android:id="@+id/buttonLoadText"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_margin="0dp"
+        android:text="Laden"
+        android:layout_weight="1"/>
+    </LinearLayout>
+
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:background="@color/green"
+      android:padding="@dimen/padding_textView"
+      android:layout_margin="5dp"
+      android:text="Content Provider"
+      android:textSize="@dimen/font_textSize"/>
 
   </LinearLayout>
 
