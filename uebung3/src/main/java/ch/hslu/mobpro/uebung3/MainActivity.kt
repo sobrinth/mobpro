@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.mainActivityView, MainFragment())
+            .replace(R.id.mainActivityView, MainFragment.newInstance())
             .commit()
     }
 

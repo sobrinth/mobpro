@@ -46,7 +46,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         updateTeaPreferenceView()
     }
 
-    fun saveResumeCountToPrivatePreferences() {
+    private fun saveResumeCountToPrivatePreferences() {
         val prefs = requireActivity().getSharedPreferences(SHARED_PREFERENCES_OVERVIEW, Context.MODE_PRIVATE)
         val newCount = prefs.getInt(COUNTER_KEY, 0) + 1
         val editor = prefs.edit()
@@ -54,7 +54,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         editor.apply()
     }
 
-    fun updateResumeCounterView() {
+    private fun updateResumeCounterView() {
         val count = requireActivity().getSharedPreferences(SHARED_PREFERENCES_OVERVIEW, Context.MODE_PRIVATE)
             .getInt(COUNTER_KEY, 0)
         val tvCounter = binding.twResumeCount as TextView
@@ -62,17 +62,20 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         tvCounter.text = text;
     }
 
-    fun updateTeaPreferenceView() {
-        //TODO: Das hier muss weg und entsprechen die richtigen Sachen angezeigt werden
+    private fun updateTeaPreferenceView() {
         binding.twPreferredTea.text = sharedPreferencesViewModel.getPreferenceSummary().value
     }
 
 
-    fun editTeaPreferencesOnClick() {
-
+    private fun editTeaPreferencesOnClick() {
+        parentFragmentManager
+            .beginTransaction()
+            .replace(R.id.mainActivityView, TeaPreferenceFragment.newInstance())
+            .addToBackStack("preferences")
+            .commit()
     }
 
-    fun resetTeaPreferencesOnClick() {
+    private fun resetTeaPreferencesOnClick() {
         sharedPreferencesViewModel.setDefaultPreferences()
         updateTeaPreferenceView()
     }

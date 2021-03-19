@@ -4,8 +4,10 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.preference.ListPreference
 import androidx.preference.PreferenceManager
 import java.lang.StringBuilder
+import java.util.*
 
 class SharedPreferencesViewModel(application: Application): AndroidViewModel(application) {
 
@@ -37,11 +39,19 @@ class SharedPreferencesViewModel(application: Application): AndroidViewModel(app
         sb.append(", ")
         if (prefs.getBoolean(PREF_TEA_WITH_SUGAR, true)) {
             sb.append("gesüsst mit ")
-            sb.append(prefs.getString(PREF_TEA_SWEETENER, "natural"))
+            sb.append(getSweetenerDisplayValue(prefs.getString(PREF_TEA_SWEETENER, "natural")!!))
         } else {
             sb.append("ungesüsst")
         }
         preferencesSummary.value = sb.toString()
     }
 
+
+    private fun getSweetenerDisplayValue(string: String): String {
+
+        val entryValues = getApplication<Application>().applicationContext.resources.getStringArray(R.array.teaSweetenerValues)
+        val entries = getApplication<Application>().applicationContext.resources.getStringArray(R.array.teaSweetener)
+        val index = entryValues.indexOf(string)
+        return entries[index]
+    }
 }
