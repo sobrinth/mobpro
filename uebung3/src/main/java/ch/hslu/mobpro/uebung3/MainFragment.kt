@@ -1,12 +1,20 @@
 package ch.hslu.mobpro.uebung3
 
 
+import android.Manifest
+import android.app.AlertDialog
 import android.content.Context
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.provider.Telephony
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
@@ -19,6 +27,21 @@ class MainFragment : Fragment(R.layout.fragment_main) {
 
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
+
+    private val requestPermissionLauncher: ActivityResultLauncher<String> =
+        registerForActivityResult(
+            ActivityResultContracts.RequestPermission(),
+            object : ActivityResultCallback<Boolean> {
+                override fun onActivityResult(result: Boolean) {
+                    if (!result) {
+                        Toast.makeText(context, "Permission denied!", Toast.LENGTH_SHORT).show()
+                        return
+                    } else {
+                        readSms()
+                    }
+                }
+            }
+        )
 
     companion object {
         private const val SHARED_PREFERENCES_OVERVIEW = "sharedPreferencesOverview"
@@ -40,6 +63,7 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         binding.buttonResetPrefs.setOnClickListener { resetTeaPreferencesOnClick() }
         binding.buttonSaveText.setOnClickListener { onClickSaveFile() }
         binding.buttonLoadText.setOnClickListener { onClickLoadFile() }
+        binding.buttonShowSMS.setOnClickListener { performOperationWithPermission() }
 
         fileReaderViewModel.getStoredText().observe(viewLifecycleOwner, Observer { text ->
             binding.textFile.setText(text)
@@ -106,6 +130,31 @@ class MainFragment : Fragment(R.layout.fragment_main) {
         fileReaderViewModel.loadTextFromFile(binding.cbUseExternalStorage.isChecked)
     }
 
+    private fun performOperationWithPermission() {
+        val result = requireActivity().checkSelfPermission(Manifest.permission.READ_SMS)
+        val granted: Boolean = result == PackageManager.PERMISSION_GRANTED
+        if (!granted) {
+            requestPermissionLauncher.launch(Manifest.permission.READ_SMS)
+        } else {
+            readSms()
+        }
+    }
+
+
+    private fun readSms() {
+        val cursor = requireActivity().contentResolver.query(Telephony.Sms.Inbox.CONTENT_URI,
+        arrayOf(Telephony.Sms.Inbox._ID, Telephony.Sms.Inbox.BODY),
+        null,
+        null,
+        null
+        )
+        AlertDialog.Builder(context)
+            .setTitle("SMS in Inbox")
+            .setCursor(cursor, null, Telephony.TextBasedSmsColumns.BODY)
+            .setNeutralButton("Ok", null)
+            .create()
+            .show()
+    }
 
 
 }

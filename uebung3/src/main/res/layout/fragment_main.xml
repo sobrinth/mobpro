@@ -111,6 +111,12 @@
       android:text="Content Provider"
       android:textSize="@dimen/font_textSize"/>
 
+    <Button
+      android:id="@+id/buttonShowSMS"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="sms anzeigen"/>
   </LinearLayout>
 
 
