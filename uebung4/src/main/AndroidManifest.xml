@@ -8,6 +8,7 @@
     android:label="Uebung 4"
     android:roundIcon="@mipmap/ic_launcher_round"
     android:supportsRtl="true"
+    android:usesCleartextTraffic="true"
     android:theme="@style/Theme.Uebung3">
     <activity android:name="ch.hslu.mobpro.uebung4.MainActivity">
       <intent-filter>

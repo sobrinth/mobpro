@@ -1,16 +1,21 @@
 package ch.hslu.mobpro.uebung4
 
 import android.content.Context
+import android.content.DialogInterface
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
+import androidx.activity.viewModels
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.work.*
 import ch.hslu.mobpro.uebung4.databinding.ActivityMainBinding
+import com.squareup.picasso.Picasso
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     private lateinit var binding: ActivityMainBinding
+    private val bandsViewModel: BandsViewModel by viewModels()
 
     //todo Add onClicks() to buttons w/o ID
     companion object {
@@ -24,8 +29,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         super.onCreate(savedInstanceState)
         this.binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(this.binding.root)
+        setupViewModelObservers()
     }
-
 
     fun freeze7Seconds(view: View?) {
         try {
@@ -45,6 +50,27 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
+    fun requestDataFromServer(view: View?) {
+        bandsViewModel.requestBandCodesFromServer()
+    }
+
+    fun resetViewModel(view: View) {
+        bandsViewModel.resetBandsData()
+    }
+
+    fun showBandsDialog(view: View?) {
+        val bands = bandsViewModel.getBands().value!!
+        AlertDialog.Builder(this)
+            .setTitle("Welche Band?")
+            .setItems(bands.map { bandCode -> bandCode.name }.toTypedArray()) { _: DialogInterface, itemPos: Int ->
+                bandsViewModel.requestBandInfoFromServer(bands[itemPos].code)
+            }
+            .setNegativeButton("Abbrechen") { _, _ ->
+                // ignore
+            }
+            .create()
+            .show()
+    }
 
     private fun createDemoThread(): Thread {
         return object : Thread("hsluDemoThread") {
@@ -71,6 +97,35 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             .build()
         workManager.enqueue(demoWorkerRequest)
     }
+
+    private fun setupViewModelObservers() {
+        bandsViewModel.getBands().observe(this) { names ->
+            binding.mainCurrentBandName.text = ""
+            binding.mainCurrentBandInfo.text = ""
+            binding.mainCurrentBandImage.visibility = View.GONE
+            binding.mainNumberOfBands.text = "#Bands = " + if (names.isEmpty()) 0 else names.size
+            if (names.isNotEmpty()) {
+                showBandsDialog(null)
+            }
+        }
+        bandsViewModel.getCurrentBand().observe(this) {bandInfo ->
+            binding.mainCurrentBandName.text = bandInfo?.name ?: ""
+            if (bandInfo != null) {
+                binding.mainCurrentBandInfo.text = bandInfo.homeCountry + ", Gründung: " + bandInfo.foundingYear
+            } else {
+                binding.mainCurrentBandInfo.text = ""
+            }
+            if (bandInfo?.bestOfCdCoverImageUrl != null) {
+                Picasso.get()
+                    .load(bandInfo.bestOfCdCoverImageUrl)
+                    .into(binding.mainCurrentBandImage)
+                binding.mainCurrentBandImage.visibility = View.VISIBLE
+            } else {
+                binding.mainCurrentBandImage.visibility = View.GONE
+            }
+        }
+    }
+
 
 
     class DemoWorker(ctx: Context, private val params: WorkerParameters): Worker(ctx, params) {
