@@ -4,12 +4,12 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.preference.ListPreference
 import androidx.preference.PreferenceManager
 import java.lang.StringBuilder
-import java.util.*
 
 class SharedPreferencesViewModel(application: Application): AndroidViewModel(application) {
+
+    private val context = application
 
     private val PREF_TEA_PREFERRED = "teaPreferred"
     private val PREF_TEA_WITH_SUGAR = "teaWithSugar"
@@ -22,7 +22,7 @@ class SharedPreferencesViewModel(application: Application): AndroidViewModel(app
     }
 
     fun setDefaultPreferences() {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(getApplication<Application>().applicationContext)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val editor = prefs.edit()
         editor.putString(PREF_TEA_PREFERRED, "Lipton/Pfefferminztee")
         editor.putBoolean(PREF_TEA_WITH_SUGAR, true)
@@ -32,7 +32,7 @@ class SharedPreferencesViewModel(application: Application): AndroidViewModel(app
     }
 
     fun buildPreferenceSummaryString() {
-        val prefs = PreferenceManager.getDefaultSharedPreferences(getApplication<Application>().applicationContext)
+        val prefs = PreferenceManager.getDefaultSharedPreferences(context)
         val sb = StringBuilder()
         sb.append("Ich trinke am liebsten ")
         sb.append(prefs.getString(PREF_TEA_PREFERRED, "Lipton/Pfefferminztee"))
@@ -49,8 +49,8 @@ class SharedPreferencesViewModel(application: Application): AndroidViewModel(app
 
     private fun getSweetenerDisplayValue(string: String): String {
 
-        val entryValues = getApplication<Application>().applicationContext.resources.getStringArray(R.array.teaSweetenerValues)
-        val entries = getApplication<Application>().applicationContext.resources.getStringArray(R.array.teaSweetener)
+        val entryValues = context.resources.getStringArray(R.array.teaSweetenerValues)
+        val entries = context.resources.getStringArray(R.array.teaSweetener)
         val index = entryValues.indexOf(string)
         return entries[index]
     }
