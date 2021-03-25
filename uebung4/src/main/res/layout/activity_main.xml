@@ -1,7 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:id="@+id/mainActivityView"
-  android:layout_width="fill_parent"
-  android:layout_height="fill_parent">
-
-</FrameLayout>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
+  <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:textSize="25sp"
+      android:padding="5dp"
+      android:layout_marginBottom="@dimen/margin_bottom"
+      android:text="HSLU Mobile Programming"/>
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/yellow"
+      android:textSize="@dimen/font_titleSize"
+      android:padding="10dp"
+      android:layout_margin="5dp"
+      android:text="Nebenläufigkeit (Threads &amp; Workers)"/>
+    <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:onClick="freeze7Seconds"
+      android:text="GUI 7 SEKUNDEN BLOCKIEREN"/>
+    <Button
+      android:id="@+id/main_thread_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:onClick="startDemoThread"
+      android:text="DEMO-THREAD STARTEN"/>
+    <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:onClick="startDemoWorker"
+      android:text="DEMO-WORKER STARTEN"/>
+    <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:background="@color/yellow"
+      android:textSize="@dimen/font_titleSize"
+      android:padding="10dp"
+      android:layout_margin="5dp"
+      android:text="Kommunikation (HTTP &amp; JSON)"/>
+    <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="SERVER-ANFRAGE Starten"/>
+    <Button
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="View Model zurücksetzten"/>
+    <TextView
+      android:id="@+id/main_number_of_bands"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="TextView"/>
+    <Button
+      android:id="@+id/main_show_bands_button"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="Zeige Band Auswahl an"/>
+    <TextView
+      android:id="@+id/main_current_band_name"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="TextView"/>
+    <TextView
+      android:id="@+id/main_current_band_info"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_margin="5dp"
+      android:text="TextView"/>
+  </LinearLayout>
+</ScrollView>
