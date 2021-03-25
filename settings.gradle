@@ -2,4 +2,5 @@ rootProject.name= 'MOBPRO'
 
 include ':uebung1' // FirstSkeletonApp
 include ':uebung2' // UIDemo
-include ':uebung3'
+include ':uebung3' // Preferences
+include ':uebung4' // Kommunikation und Nebenläufigkeit
